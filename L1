@@ -1,0 +1,46 @@
+//Find Pivot Index
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+      int ind=-1;
+      int sum=0;
+      int n=nums.length;
+      for(int i=0;i<n;i++){
+        sum+=nums[i];
+      }  
+      int right_sum=sum;
+      int left_sum=0;
+      for(int i=0;i<n;i++){
+        if(right_sum-nums[i]==left_sum){
+
+            return i;
+        }
+        left_sum+=nums[i];
+        right_sum-=nums[i];
+      }
+      return ind;
+    }
+}
+
+//Count elements with maximum frequency
+
+class Solution {
+    public int maxFrequencyElements(int[] nums) {
+        int n=nums.length;
+        int maxi=0;
+        HashMap<Integer,Integer> mp=new HashMap<>();
+        for(int i=0;i<n;i++){
+        
+            mp.put(nums[i],mp.getOrDefault(nums[i],0)+1);
+           
+maxi=Math.max(maxi,mp.get(nums[i]));
+        }
+        int cnt=0;
+        for(int key:mp.keySet()){
+if(mp.get(key)==maxi){
+cnt+=mp.get(key);
+}
+     }
+     return cnt;
+    }
+}
