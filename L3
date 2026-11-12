@@ -1,0 +1,51 @@
+//Two SumII
+
+
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+      int n=numbers.length;
+      int i=0;
+      int j=n-1;
+      while(i<=j){
+        if(numbers[i]+numbers[j]==target){
+            return new int[]{i+1,j+1};
+        }
+        else if(numbers[i]+numbers[j]>target){
+            j--;
+        }
+        else{
+            i++;
+        }
+      }  
+      return new int[]{-1,-1};
+    }
+}
+
+//Grumpy book store owner
+
+class Solution {
+    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
+     int n=customers.length;
+     int m=grumpy.length;
+     int maxi=0;
+     for(int i=0;i<=n-minutes;i++){
+        int sum=0;
+        for(int j=i;j<i+minutes;j++){
+            if(grumpy[j]==1){
+            sum+=customers[j];
+            }
+        }
+maxi=Math.max(maxi,sum);
+     }   
+    System.out.println(maxi);
+     int k=0;
+     for(int i=0;i<m;i++){
+        if(grumpy[i]==0){
+            k+=customers[i];
+        }
+     }
+    
+     return k+maxi;
+    }
+}
+
